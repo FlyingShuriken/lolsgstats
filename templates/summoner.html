@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="QueryWrapper">
+    <h2>{{ query["name"] }}</h2>
+    {% for i in query["games"] %}
+        <div class="QueryItems">
+            <a>{{ i["champion"] }}</a>
+            <a>{{ i["mode"] }}</a>
+            <a>{{ i["kda"] }}</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
