@@ -1,14 +1,54 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div class="QueryWrapper">
-    <h2>{{ query["name"] }}</h2>
-    {% for i in query["games"] %}
-        <div class="QueryItems">
-            <a>{{ i["champion"] }}</a>
-            <a>{{ i["mode"] }}</a>
-            <a>{{ i["kda"] }}</a>
+
+{% if msg %}
+    <h1>{{ msg }}</h1>
+{% else %}
+<div class="row-parent">
+    <div class="box-child">
+        <div class="card mb-3" style="max-width: 540px; margin: 10px">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/{{ version }}/img/profileicon/{{ profile_id }}.png" class="card-img-top" >
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ query["name"] }}</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    {% endfor %}
-</div>
+    </div>
+    <div class="box-child">
+        {% for i in query["games"] %}
+            {% if i["winorlose"] == "Win" %}
+            <div class="row win">
+                <div class="QueryItems col-md-4">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/{{ version }}/img/champion/{{ i['champion'] }}.png">
+                </div>
+                <div class="QueryItems col-md-8">
+                    <h5>{{ i["champion"] }}</h5>
+                    <h5>{{ i["mode"] }}</h5>
+                    <h5>{{ i["kda"] }}</h5>
+                </div>
+            </div>
+            {% else %}
+            <div class="row lose">
+                <div class="QueryItems col-md-4">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/{{ version }}/img/champion/{{ i['champion'] }}.png">
+                </div>
+                <div class="QueryItems col-md-8">
+                    <h5>{{ i["champion"] }}</h5>
+                    <h5>{{ i["mode"] }}</h5>
+                    <h5>{{ i["kda"] }}</h5>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>   
+{% endif %}
+
 {% endblock %}

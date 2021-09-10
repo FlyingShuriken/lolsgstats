@@ -1,0 +1,54 @@
+html,
+body {
+  min-height: 100%;
+}
+
+textarea#query-search {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.container {
+  min-height: 100%;
+}
+
+.row-parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box-child {
+  flex: 1 1 150px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.submit-button {
+  margin: 5px 0px 0px 0px;
+  padding: 5px 5px;
+  background-color: rgb(39, 250, 247);
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.row {
+  margin: 10px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: minmax(150px, 25%) 1fr;
+  padding: 0;
+}
+
+.win {
+  background-color: #97f3bd;
+}
+
+.lose {
+  background-color: #ed958b;
+}

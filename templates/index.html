@@ -11,7 +11,10 @@
         </div>
         <div class="box-child">
             <h3>Search Multiple Player</h3>
-            <textarea class="form-control" id="ign" name="ign" placeholder="Summoner 1 joined the room.&#10;Summoner 2 joined the room.&#10;Summoner 3 joined the room.&#10;Summoner 4 joined the room.&#10;Summoner 5 joined the room.&#10;" rows="10" ></textarea>
+            <form action="/querysearch" method="GET">
+            <textarea class="form-control" id="queryseach" name="queryseach" placeholder="Summoner 1 joined the room.&#10;Summoner 2 joined the room.&#10;Summoner 3 joined the room.&#10;Summoner 4 joined the room.&#10;Summoner 5 joined the room.&#10;" rows="10" ></textarea>
+            <input type="submit" value="Search" class="submit-button"></input>
+            </form>
         </div>
         <div class="box-child">
             <h3>Current Leaderboard</h3>

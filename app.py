@@ -15,6 +15,8 @@ def summoner():
 
     id_url = (str(config["API_ID"])).replace("REPLACE_IGN_HERE", ign)
     get_id = get(id_url)
+    if get_id.status_code == 404:
+        return render_template("summoner.html", msg="User not found!")
     id = loads(get_id.text)["accountId"]
 
     history_url = (str(config["API_HISTORY"])).replace(
@@ -23,11 +25,13 @@ def summoner():
     histories = loads(get_history.text)
     histories_list = histories['games']['games']
     histories_list.reverse()
+    version = (loads(get(config["API_VERSION"]).text))["v"]
     query = {
         "name": "",
         "games": []
     }
     name = histories_list[0]['participantIdentities'][0]['player']['summonerName']
+    profile_id = histories_list[0]['participantIdentities'][0]['player']['profileIcon']
     query["name"] = name
 
     for i in histories_list:
@@ -66,7 +70,12 @@ def summoner():
             "winorlose": win_lose
         })
 
-    return render_template("summoner.html", query=query)
+    return render_template("summoner.html", query=query, profile_id=profile_id, version=version)
+
+
+@app.route("/querysearch")
+def querysearch():
+    return render_template("querysearch.html")
 
 
 @app.route("/")
